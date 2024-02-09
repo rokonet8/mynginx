@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mynginx
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: www.k3s.dirokonet.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: mynginx-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
